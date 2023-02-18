@@ -1,33 +1,10 @@
-import { useQuery } from "react-query";
-import axios from "axios";
-import { useState } from "react";
+import { useFetchPosts } from "../../hooks/usePosts";
 
 type Props = {};
-type Post = {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-};
 
 export default function ListPost({}: Props): JSX.Element {
-  const [fetched, setFetched] = useState(false);
-
-  const { data, error, isLoading, refetch, isFetching, remove } = useQuery(
-    "getPosts",
-    async () => {
-      if (fetched == true) {
-        const res = await axios.get<Post[]>(
-          "https://jsonplaceholder.typicode.com/posts?_limit=10"
-        );
-
-        setFetched(false);
-        return res.data;
-      }
-      return [];
-    },
-    { enabled: fetched, keepPreviousData: true }
-  );
+  const { postsQuery, setFetched, cleanAllPosts } = useFetchPosts();
+  const { data, isLoading, isFetching, error, refetch } = postsQuery;
 
   if (isFetching || isLoading) {
     return <div>Loading...</div>;
@@ -42,6 +19,7 @@ export default function ListPost({}: Props): JSX.Element {
       <button
         onClick={() => {
           setFetched(true);
+          refetch();
         }}
       >
         Fetch Posts
@@ -50,7 +28,7 @@ export default function ListPost({}: Props): JSX.Element {
         style={{ marginLeft: "10px" }}
         onClick={() => {
           setFetched(false);
-          refetch({ queryKey: "getPosts" });
+          cleanAllPosts();
         }}
       >
         Delete Posts
@@ -60,12 +38,18 @@ export default function ListPost({}: Props): JSX.Element {
         <div>
           <div>
             <h1>Posts</h1>
-            <hr />
             {data.map((post) => (
-              <div key={post.id}>
+              <div
+                key={post.id}
+                style={{
+                  border: "1px solid #ccc",
+                  padding: "10px",
+                  marginBottom: "10px",
+                  borderRadius: "5px",
+                }}
+              >
                 <h3>{post.title}</h3>
                 <p>{post.body}</p>
-                <hr />
               </div>
             ))}
           </div>
