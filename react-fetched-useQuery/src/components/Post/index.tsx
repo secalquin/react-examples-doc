@@ -1,8 +1,11 @@
+import { useNavigate, Link } from "react-router-dom";
 import { useFetchPosts } from "../../hooks/usePosts";
 
 type Props = {};
 
 export default function ListPost({}: Props): JSX.Element {
+  let navigate = useNavigate();
+
   const { postsQuery, setFetched, cleanAllPosts } = useFetchPosts();
   const { data, isLoading, isFetching, error, refetch } = postsQuery;
 
@@ -33,6 +36,10 @@ export default function ListPost({}: Props): JSX.Element {
       >
         Delete Posts
       </button>
+      <Link to="/trainee" state={{ some: "value" }}>
+        {" "}
+        Redirect
+      </Link>
 
       {data?.length ? (
         <div>

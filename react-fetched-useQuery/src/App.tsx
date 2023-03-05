@@ -1,22 +1,17 @@
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import ListPost from "./components/Post";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
+import Trainee from "./pages/Trainee";
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <ListPost />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/trainee" element={<Trainee />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
