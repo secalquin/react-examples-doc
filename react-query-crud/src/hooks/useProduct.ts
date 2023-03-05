@@ -7,7 +7,7 @@ interface IUseProduct {
   getAllProducts: any;
 }
 
-const useProduct = (): IUseProduct => {
+export const useProduct = (): IUseProduct => {
   const useProductQuery = useQuery<any, useQueryApiErrorType>(
     "getAllProducts",
     getAllProducts
@@ -15,5 +15,3 @@ const useProduct = (): IUseProduct => {
 
   return { useProductQuery, getAllProducts: useProductQuery.data };
 };
-
-export default useProduct;

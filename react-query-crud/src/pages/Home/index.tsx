@@ -1,9 +1,11 @@
 import React from "react";
-import useProduct from "../../hooks/useProduct";
+import { useNavigate } from "react-router-dom";
+import { useProduct } from "../../hooks/useProduct";
 
 type Props = {};
 
 const Home = (props: Props) => {
+  let navigate = useNavigate();
   const { useProductQuery } = useProduct();
   const { data, isLoading, isError, error } = useProductQuery;
 
@@ -11,7 +13,7 @@ const Home = (props: Props) => {
   if (isError) return <div>Error: {error?.message}</div>;
 
   const handleClickShow = (productId: any) => {
-    console.log(productId);
+    navigate(`/product/${productId}`);
   };
 
   return (
