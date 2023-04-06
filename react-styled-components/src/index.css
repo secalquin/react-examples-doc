@@ -2,5 +2,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Sofia Pro Regular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Sofia Pro Black, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #0f1119;
 }

@@ -1,0 +1,22 @@
+.presentation {
+  width: 100%;
+  height: 350px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f5;
+}
+
+.title {
+  font-size: 70px;
+  font-weight: 700;
+  color: #6c757d;
+
+  text-transform: uppercase;
+}
+
+.about-me {
+  color: #6c757d;
+}

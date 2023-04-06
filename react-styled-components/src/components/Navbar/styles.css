@@ -1,0 +1,96 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c1f2d;
+  color: #fff;
+  height: 60px;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+.navbar-toggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  margin-left: 20px;
+  position: relative;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-link:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.navbar-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    height: 60px;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: #333;
+    flex-direction: column;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-item {
+    margin: 0;
+    text-align: center;
+  }
+
+  .navbar-link {
+    display: block;
+    padding: 10px 0;
+  }
+}
