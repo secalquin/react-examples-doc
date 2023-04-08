@@ -1,22 +1,61 @@
-.presentation {
+.main-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 350px;
+  height: 100%;
+}
 
+.section-one {
+  width: 50%;
+  height: 100%;
+  border-right: 2px solid #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f0f0f5;
 }
 
-.title {
-  font-size: 70px;
-  font-weight: 700;
-  color: #6c757d;
-
-  text-transform: uppercase;
+.section-two {
+  width: 100%;
+  height: 100%;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.about-me {
-  color: #6c757d;
+.social-buttons {
+  margin: 25px;
+}
+
+a > i {
+  color: #fff;
+  font-size: 30px;
+  margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .main-section {
+    flex-direction: column;
+  }
+
+  .section-one {
+    width: 100%;
+    height: 50%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    padding: 0 20px;
+  }
+
+  .social-buttons {
+    display: flex;
+  }
+
+  .section-two {
+    padding: 25px;
+    margin: 0;
+  }
 }

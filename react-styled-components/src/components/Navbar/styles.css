@@ -75,13 +75,14 @@
     left: 0;
     width: 100%;
     height: calc(100vh - 60px);
-    background-color: #333;
+    background-color: #1c1f2d;
     flex-direction: column;
   }
 
   .navbar-menu.open {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   .navbar-item {
@@ -92,5 +93,8 @@
   .navbar-link {
     display: block;
     padding: 10px 0;
+
+    font-size: 25px;
+    font-weight: bold;
   }
 }
