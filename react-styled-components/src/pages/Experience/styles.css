@@ -22,7 +22,7 @@
 }
 
 .experience-item {
-  width: 900px; /* Tamaño fijo para pantallas grandes */
+  width: 90%;
   height: 90px;
   margin: 10px;
 }
