@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import { optionsList } from "./data";
 
 const Navbar = () => {
+  let navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -24,7 +26,7 @@ const Navbar = () => {
         {optionsList.map((item) => {
           return (
             <li className="navbar-item" key={item.id}>
-              <a href="#" className="navbar-link">
+              <a onClick={() => navigate(item.path)} className="navbar-link">
                 {item.name}
               </a>
             </li>

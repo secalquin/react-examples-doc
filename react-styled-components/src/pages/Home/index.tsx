@@ -22,7 +22,7 @@ const Home = (props: Props) => {
             <i className="fab fa-linkedin"></i>
           </a>
           <a
-            href="https://www.linkedin.com/in/sebastian-calquin/"
+            href="https://www.github.com/secalquin"
             target="_blank"
             rel="noopener noreferrer"
           >

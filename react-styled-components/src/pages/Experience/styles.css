@@ -1,0 +1,51 @@
+.main-experience {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.job {
+  text-transform: uppercase;
+}
+
+.job-date {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.job-sub-title {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.experience-item {
+  width: 900px; /* Tamaño fijo para pantallas grandes */
+  height: 90px;
+  margin: 10px;
+}
+
+.experience-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .main-experience {
+    overflow-x: scroll;
+  }
+
+  .experience-item {
+    width: auto;
+    height: auto;
+
+    margin: 25px;
+  }
+
+  .experience-head {
+    display: flex;
+  }
+}
