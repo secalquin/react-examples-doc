@@ -19,48 +19,53 @@ export default function ListPost({}: Props): JSX.Element {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          setFetched(true);
-          refetch();
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        Fetch Posts
-      </button>
-      <button
-        style={{ marginLeft: "10px" }}
-        onClick={() => {
-          setFetched(false);
-          cleanAllPosts();
-        }}
-      >
-        Delete Posts
-      </button>
-      <Link to="/trainee" state={{ some: "value" }}>
+        <button
+          onClick={() => {
+            setFetched(true);
+            refetch();
+          }}
+        >
+          Fetch Posts
+        </button>
+        <button
+          style={{ marginLeft: "10px" }}
+          onClick={() => {
+            setFetched(false);
+            cleanAllPosts();
+          }}
+        >
+          Delete Posts
+        </button>
+      </div>
+      {/*<Link to="/trainee" state={{ some: "value" }}>
         {" "}
         Redirect
-      </Link>
+      </Link>*/}
 
       {data?.length ? (
-        <div>
-          <div>
-            <h1>Posts</h1>
-            {data.map((post) => (
-              <div
-                key={post.id}
-                style={{
-                  border: "1px solid #ccc",
-                  padding: "10px",
-                  marginBottom: "10px",
-                  borderRadius: "5px",
-                }}
-              >
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <>
+          <h1>Posts</h1>
+          {data.map((post) => (
+            <div
+              key={post.id}
+              style={{
+                border: "1px solid #ccc",
+                padding: "10px",
+                marginBottom: "10px",
+                borderRadius: "5px",
+              }}
+            >
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+            </div>
+          ))}
+        </>
       ) : (
         <div style={{ marginTop: "50px" }}>
           Click button to search new posts ....
