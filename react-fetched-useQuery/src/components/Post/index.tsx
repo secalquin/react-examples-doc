@@ -7,9 +7,9 @@ export default function ListPost({}: Props): JSX.Element {
   let navigate = useNavigate();
 
   const { postsQuery, setFetched, cleanAllPosts } = useFetchPosts();
-  const { data, isLoading, isFetching, error, refetch } = postsQuery;
+  const { data, isLoading, error, refetch } = postsQuery;
 
-  if (isFetching || isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
