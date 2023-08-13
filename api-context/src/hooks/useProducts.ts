@@ -4,7 +4,7 @@ import { Product } from "../types";
 
 export const useProducts = () => {
   const useQueryProducts = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["products"],
     queryFn: async () => {
       const dataFetched = await axios.get<Product[]>(
         "https://fakestoreapi.com/products"

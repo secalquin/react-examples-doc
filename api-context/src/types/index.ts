@@ -12,10 +12,3 @@ export type Product = {
   image: string;
   rate: Rate;
 };
-
-export type CartContextType = {
-  cart: Product[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (id: number) => void;
-  cartSize: number;
-};
