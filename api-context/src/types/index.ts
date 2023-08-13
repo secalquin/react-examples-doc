@@ -1,16 +1,21 @@
+type Rate = {
+  rate: number;
+  count: number;
+};
+
 export type Product = {
-  id: number;
-  name: string;
+  readonly id: number;
+  title: string;
   price: number;
-  image: string;
-  description: string;
   category: string;
-  quantity: number;
+  description: string;
+  image: string;
+  rate: Rate;
 };
 
 export type CartContextType = {
   cart: Product[];
-  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
+  cartSize: number;
 };

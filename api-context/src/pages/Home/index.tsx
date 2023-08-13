@@ -1,30 +1,41 @@
 import { useContext } from "react";
+import { Container, Grid } from "@mui/material";
+import Navbar from "../../components/AppBar";
+import ProductCard from "../../components/ProductCard";
 import CartContext from "../../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import { useProducts } from "../../hooks/useProducts";
 
 const Home = () => {
-  const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
+  const { useQueryProducts } = useProducts();
+
+  const { data, isLoading, isError } = useQueryProducts;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error</div>;
+  }
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          addToCart({
-            id: 1,
-            category: "category",
-            description: "description",
-            image: "image",
-            name: "name",
-            price: 1,
-            quantity: 1,
-          });
-          navigate("/cart");
-        }}
-      >
-        Add to cart
-      </button>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Container sx={{ py: 8 }} maxWidth="md">
+          <Grid container spacing={4}>
+            {data?.map((product) => (
+              <ProductCard
+                product={product}
+                key={product.id}
+                addToCart={addToCart}
+              />
+            ))}
+          </Grid>
+        </Container>
+      </main>
+    </>
   );
 };
 

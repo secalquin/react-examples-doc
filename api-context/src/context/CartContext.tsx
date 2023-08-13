@@ -22,9 +22,9 @@ export function CartContextProvider({ children }: Props): React.ReactElement {
     <CartContext.Provider
       value={{
         cart,
-        setCart,
         addToCart,
         removeFromCart,
+        cartSize: cart.length,
       }}
     >
       {children}
