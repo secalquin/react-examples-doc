@@ -11,4 +11,5 @@ export type Product = {
   description: string;
   image: string;
   rate: Rate;
+  stock: number;
 };

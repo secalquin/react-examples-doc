@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   Container,
@@ -13,14 +13,24 @@ import {
 } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useProductById } from "../../hooks/useProductById";
+import CartContext from "../../context/CartContext";
+
+type useParamsType = {
+  id: string;
+};
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const [storeAvailability, setStoreAvailability] = useState(true);
+  const { addToCart } = useContext(CartContext);
+  const { id } = useParams<useParamsType>();
+  const [storeAvailability] = useState(true);
   const [quantity, setQuantity] = useState(1);
+  const { useQueryProductById } = useProductById(Number(id));
 
-  const handleQuantityChange = (event) => {
-    const newQuantity = event.target.value;
+  const { data } = useQueryProductById;
+
+  const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newQuantity = Number(event.target.value);
     if (newQuantity >= 1 && newQuantity <= product.stock) {
       setQuantity(newQuantity);
     }
@@ -62,14 +72,14 @@ const ProductDetail = () => {
               alignItems="center"
               mb={2}
             >
-              <Typography variant="h4">{product.name}</Typography>
               <Chip label={`Stock: ${product.stock}`} color="primary" />
+              <Typography variant="h6">{data?.title}</Typography>
             </Grid>
             <Divider sx={{ marginY: 2 }} />
-            <Typography variant="body1">{product.description}</Typography>
+            <Typography variant="body1">{data?.description}</Typography>
             <Divider sx={{ marginY: 2 }} />
             <Typography variant="h6">
-              Precio: {product.price.toFixed(2)}$
+              Precio: {data?.price.toFixed(2)}$
             </Typography>
             <Divider sx={{ marginY: 2 }} />
             <Typography
@@ -77,7 +87,7 @@ const ProductDetail = () => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                color: storeAvailability ? "#1565c0" : "red",
+                color: storeAvailability ? "#1565c0" : "gray",
               }}
             >
               <Icon sx={{ marginRight: 1 }}>local_shipping</Icon>
@@ -86,7 +96,7 @@ const ProductDetail = () => {
                 sx={{
                   marginLeft: 1,
                   marginRight: 1,
-                  color: storeAvailability ? "#1565c0" : "red",
+                  color: storeAvailability ? "#1565c0" : "gray",
                 }}
               >
                 store
@@ -108,7 +118,25 @@ const ProductDetail = () => {
                 />
               </Grid>
               <Grid item xs={6} sx={{ textAlign: "right" }}>
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() =>
+                    addToCart({
+                      category: "",
+                      id: 0,
+                      title: "",
+                      price: 0,
+                      description: "",
+                      image: "",
+                      rate: {
+                        rate: 0,
+                        count: 0,
+                      },
+                      stock: 0,
+                    })
+                  }
+                >
                   Agregar al carrito
                 </Button>
               </Grid>
