@@ -52,7 +52,9 @@ const DeliveryOptions: React.FC<DeliveryOptionsProps> = ({
             local_shipping
           </Icon>
           <div>
-            <Typography variant="body2">Despacho a domicilio</Typography>
+            <Typography variant="body2" color={"GrayText"}>
+              Despacho a domicilio
+            </Typography>
             <Typography color={"#1565c0"}>Disponible</Typography>
           </div>
         </Box>

@@ -1,9 +1,9 @@
 import React, { ReactNode, useState } from "react";
-import { Product } from "../types";
+import { CartItem, Product } from "../types";
 import Swal from "sweetalert2";
 
 type CartContextType = {
-  cart: Product[];
+  cart: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
   cartSize: number;
@@ -16,10 +16,36 @@ interface Props {
 }
 
 export function CartContextProvider({ children }: Props): React.ReactElement {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: Product) => {
-    setCart([...cart, item]);
+    // add item to cart and increment quantity if it already exists
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+
+    if (existingItem) {
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === item.id
+            ? {
+                ...cartItem,
+                quantity: cartItem.quantity + 1,
+                price: cartItem.price + item.price,
+              }
+            : cartItem
+        )
+      );
+    } else {
+      setCart([
+        ...cart,
+        {
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          quantity: 1,
+          img: item.image,
+        },
+      ]);
+    }
 
     Swal.fire({
       icon: "success",
