@@ -1,7 +1,7 @@
 {
   "name": "api-context",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.15.0",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.11",
+    "sweetalert2": "^11.7.22"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

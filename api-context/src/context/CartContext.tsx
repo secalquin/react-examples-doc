@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Product } from "../types";
+import Swal from "sweetalert2";
 
 type CartContextType = {
   cart: Product[];
@@ -19,10 +20,24 @@ export function CartContextProvider({ children }: Props): React.ReactElement {
 
   const addToCart = (item: Product) => {
     setCart([...cart, item]);
+
+    Swal.fire({
+      icon: "success",
+      title: "Producto agregado al carrito",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   const removeFromCart = (id: number) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart(cart.filter((item) => item.id !== id.toString()));
+
+    Swal.fire({
+      icon: "success",
+      title: "Producto eliminado del carrito",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (

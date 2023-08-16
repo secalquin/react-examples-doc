@@ -4,7 +4,7 @@ type Rate = {
 };
 
 export type Product = {
-  readonly id: number;
+  readonly id: string;
   title: string;
   price: number;
   category: string;
@@ -12,4 +12,11 @@ export type Product = {
   image: string;
   rate: Rate;
   stock: number;
+};
+
+export type CartItem = {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
 };

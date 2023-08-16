@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { Product } from "../../types";
 import { useNavigate } from "react-router-dom";
+import { sliceStringToLength } from "../../utils/sliceString";
 
 type Props = {
   product: Product;
@@ -20,7 +21,7 @@ const ProductCard = ({ product, addToCart }: Props) => {
 
   return (
     <>
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={4} xl={3}>
         <Card
           sx={{
             height: "100%",
@@ -37,10 +38,12 @@ const ProductCard = ({ product, addToCart }: Props) => {
             image={product.image}
           />
           <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h6">
               {product.title}
             </Typography>
-            <Typography>{product.description}</Typography>
+            <Typography>
+              {sliceStringToLength(product.description, 30)}
+            </Typography>
           </CardContent>
           <CardActions>
             <Button
@@ -55,7 +58,7 @@ const ProductCard = ({ product, addToCart }: Props) => {
               size="small"
               onClick={() => {
                 addToCart({
-                  id: 0,
+                  id: "1",
                   title: "",
                   price: 0,
                   category: "",
@@ -65,6 +68,7 @@ const ProductCard = ({ product, addToCart }: Props) => {
                     rate: 0,
                     count: 0,
                   },
+                  stock: 0,
                 });
               }}
             >

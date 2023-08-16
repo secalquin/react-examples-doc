@@ -1,5 +1,4 @@
 import React from "react";
-import Copyright from "../Copyright";
 import Navbar from "../AppBar";
 
 type Props = {
@@ -11,7 +10,7 @@ const Layout = ({ children }: Props) => {
     <>
       <Navbar />
       <main>{children}</main>
-      <Copyright />
+      {/*<Copyright />*/}
     </>
   );
 };
